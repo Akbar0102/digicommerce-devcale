@@ -5,15 +5,15 @@ import { Input, Button } from "@nextui-org/react";
 export const Register = () => {
   async function handleRegister(event) {
     event.preventDefault();
-    const firstname = event.target.firstname.value;
-    const lastname = event.target.lastname.value;
+    const firstName = event.target.firstname.value;
+    const lastName = event.target.lastname.value;
     const username = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    const res = await fetch("/api/auth/register", {
+    const res = await fetch("/api/users/register", {
       method: "POST",
-      body: JSON.stringify({ firstname, lastname, username, email, password }),
+      body: JSON.stringify({ firstName, lastName, username, email, password }),
     });
     const data = await res.json();
     console.log(data);
@@ -34,7 +34,9 @@ export const Register = () => {
           <Input name="username" placeholder="Username" />
           <Input name="email" placeholder="Email" />
           <Input name="password" placeholder="Password" type="password" />
-          <Button type="submit">Register</Button>
+          <Button type="submit" color="primary" className="w-full">
+            Register
+          </Button>
         </div>
       </form>
     </div>
