@@ -1,28 +1,29 @@
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import AWS from "aws-sdk";
 
-const s3Client = new S3Client({
-  region: process.env.AWS_REGION,
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY,
-    secretAccessKey: process.env.AWS_SECRET_KEY,
-  },
+AWS.config.update({
+  accessKeyId: process.env.WASABI_ACCESS_KEY,
+  secretAccessKey: process.env.WASABI_SECRET_KEY,
+  region: process.env.WASABI_REGION,
 });
 
-export async function uploadFile({ Body, Key, ContentType, Dir }) {
-  const bytes = await Body.arrayBuffer();
-  const buffer = Buffer.from(bytes);
+const S3 = new AWS.S3({
+  endpoint: "https://s3.ap-southeast-1.wasabisys.com",
+});
 
-  const command = new PutObjectCommand({
-    Bucket: process.env.AWS_BUCKET,
-    Body: buffer,
-    Key: `${Dir}/${Key}`,
-    ContentType,
+export const uploadFile = (file, folder) => {
+  const S3Params = {
+    Bucket: process.env.WASABI_BUCKET,
+    Key: `${folder}/${file.name}`,
+    Body: file,
+  };
+
+  return new Promise((resolve, reject) => {
+    S3.upload(S3Params, (error, data) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(data);
+      }
+    });
   });
-
-  try {
-    const res = await s3Client.send(command);
-    console.log(res);
-  } catch (error) {
-    console.log(error);
-  }
-}
+};
