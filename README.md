@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project Digicommerce
 
-## Getting Started
+## How to use
 
-First, run the development server:
+Please follow the steps below to run the project.
+
+```bash
+git clone https://github.com/Akbar0102/digicommerce-devcale.git
+```
+
+```bash
+cd digicommerce-devscale
+```
+
+```bash
+npm install 
+```
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How to contribute
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### UI Design
+- Start with creating frontend UI before functionality
+- Use NextUI for UI components
+- Use TailwindCSS for styling
+- DO NOT use any other UI library
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Functionality
+- Create a new branch for each feature
+- Create a pull request for each feature
+- DO NOT merge your own pull request
 
-## Learn More
+## Commit Message Format
 
-To learn more about Next.js, take a look at the following resources:
+You have to follow the following format commit message.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+git commit -m "type: subject"
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Type
 
-## Deploy on Vercel
+Must be one of the following:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **feat**: A new feature
+- **fix**: A bug fix
+- **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Subject
+
+The subject contains succinct description of the change:
+
+- use the imperative, present tense: "change" not "changed" nor "changes"
+- don't capitalize first letter
+- do not (.) at the end
+
+### Examples
+
+```bash
+git commit - m "feat: add login page"
+```
+
+```bash
+git commit - m "fix: login page not working"
+```
+
+```bash
+git commit - m "chore: update readme"
+```
